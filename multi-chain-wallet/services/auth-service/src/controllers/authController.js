@@ -2,7 +2,7 @@ import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 import User from "../models/user";
 import {ApiError} from "../utils/errors";
-import {validateEmail} from "../utils/validators";
+import { validateEmail, validatePassword } from "../utils/validators";
 
 class AuthController {
   async register(req, res, next) {
@@ -13,8 +13,8 @@ class AuthController {
         throw new ApiError(400, 'Invalid email format');
       }
 
-      if (password.length < 8) {
-        throw new ApiError(400, 'Password must be at least 8 characters long');
+      if (!validatePassword(password)) {
+        throw new ApiError(400, 'Invalid password format');
       }
 
       const existingUser = await User.findOne({ 
@@ -162,8 +162,8 @@ class AuthController {
         throw new ApiError(401, 'Current password is incorrect');
       }
 
-      if (newPassword.length < 8) {
-        throw new ApiError(400, 'New password must be at least 8 characters long');
+      if (!validatePassword(newPassword)) {
+        throw new ApiError(400, 'Invalid new password format');
       }
 
       const salt = await bcrypt.genSalt(12);

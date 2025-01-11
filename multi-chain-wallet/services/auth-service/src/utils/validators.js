@@ -9,7 +9,7 @@ const validateEmail = (email) => {
     return re.test(password);
   };
   
-export default {
+export {
     validateEmail,
     validatePassword
 };
