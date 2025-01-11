@@ -1,5 +1,5 @@
 import NATS from 'nats';
-import { Transaction } from '../Transaction';
+import { Transaction } from '../models/Transaction';
 import { TransactionProcessor } from '../services/TransactionProcessor';
 
 let nc;
