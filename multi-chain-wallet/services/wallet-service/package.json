@@ -11,10 +11,12 @@
   "description": "",
   "dependencies": {
     "@solana/web3.js": "^1.98.0",
+    "axios": "^1.7.9",
     "bitcoinjs-lib": "^6.1.7",
     "cors": "^2.8.5",
     "ethers": "^6.13.5",
     "express": "^4.21.2",
-    "helmet": "^8.0.0"
+    "helmet": "^8.0.0",
+    "ioredis": "^5.4.2"
   }
 }
