@@ -1,7 +1,7 @@
 import express from "express";
 const router = express.Router();
 import walletController  from "../controllers/walletController";
-import authMiddleware  from "../middleware/auth";
+import authMiddleware from "../middlewares/auth";
 
 router.post('/:chain/create', authMiddleware, walletController.createWallet);
 router.get('/:chain/:address/balance', authMiddleware, walletController.getBalance);
