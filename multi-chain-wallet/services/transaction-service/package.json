@@ -1,0 +1,14 @@
+{
+  "dependencies": {
+    "@solana/web3.js": "^1.98.0",
+    "axios": "^1.7.9",
+    "compression": "^1.7.5",
+    "cors": "^2.8.5",
+    "ethers": "^6.13.5",
+    "express": "^4.21.2",
+    "helmet": "^8.0.0",
+    "mongoose": "^8.9.4",
+    "morgan": "^1.10.0",
+    "nats": "^2.29.1"
+  }
+}
