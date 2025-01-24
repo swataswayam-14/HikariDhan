@@ -1,5 +1,7 @@
 import jwt from "jsonwebtoken";
-import {ApiError} from "../utils/errors";
+import ApiError from "../utils/errors.js";
+import { jwtSecret } from "../utils/config.js";
+
 const authMiddleware = async (req, res, next) => {
   try {
     const authHeader = req.headers.authorization;
@@ -9,7 +11,7 @@ const authMiddleware = async (req, res, next) => {
 
     const token = authHeader.split(' ')[1];
     try {
-      const decoded = jwt.verify(token, process.env.JWT_SECRET);
+      const decoded = jwt.verify(token, jwtSecret);
       req.user = decoded;
       next();
     } catch (error) {
@@ -20,4 +22,4 @@ const authMiddleware = async (req, res, next) => {
   }
 };
 
-export default new authMiddleware();
+export default authMiddleware;

@@ -1,4 +1,4 @@
-import {ApiError} from "../utils/errors";
+import ApiError from "../utils/errors.js";
 
 const errorHandler = (err, req, res, next) => {
   if (err instanceof ApiError) {
@@ -20,4 +20,4 @@ const errorHandler = (err, req, res, next) => {
   });
 };
 
-export default new errorHandler();
+export default errorHandler;

@@ -1,8 +1,9 @@
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
-import User from "../models/user";
-import {ApiError} from "../utils/errors";
-import { validateEmail, validatePassword } from "../utils/validators";
+import User from "../models/user.js";
+import ApiError from "../utils/errors.js";
+import { validateEmail, validatePassword } from "../utils/validators.js";
+import { jwtSecret } from "../utils/config.js";
 
 class AuthController {
   async register(req, res, next) {
@@ -39,7 +40,7 @@ class AuthController {
 
       const token = jwt.sign(
         { userId: user._id },
-        process.env.JWT_SECRET,
+        jwtSecret,
         { expiresIn: '24h' }
       );
 
@@ -73,7 +74,7 @@ class AuthController {
 
       const token = jwt.sign(
         { userId: user._id },
-        process.env.JWT_SECRET,
+        jwtSecret,
         { expiresIn: '24h' }
       );
 
