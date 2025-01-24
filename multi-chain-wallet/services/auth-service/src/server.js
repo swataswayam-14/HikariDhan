@@ -1,20 +1,19 @@
 import app from '../../auth-service/src/app.js';
-import { redis } from '../../auth-service/src/utils/redis.js';
+import redis from './utils/redis.js';
+import { PORT } from './utils/config.js';
+import logger from './utils/logger.js';
 
-const PORT = process.env.PORT || 3001;
 
 async function startServer() {
   try {
-    // Ensure Redis is connected
     await redis.ping();
-    console.log('Redis connection established');
+    logger.info('Redis connection established');
 
-    // Start the server
     app.listen(PORT, () => {
-      console.log(`Wallet service listening on port ${PORT}`);
+      logger.info(`Wallet service listening on port ${PORT}`);
     });
   } catch (error) {
-    console.error('Failed to start server:', error);
+    logger.error(error,'Failed to start server:');
     process.exit(1);
   }
 }
