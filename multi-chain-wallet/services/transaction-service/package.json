@@ -1,14 +1,30 @@
 {
+  "type": "module",
+  "name": "transaction-service",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
   "dependencies": {
     "@solana/web3.js": "^1.98.0",
     "axios": "^1.7.9",
     "compression": "^1.7.5",
     "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
     "ethers": "^6.13.5",
     "express": "^4.21.2",
     "helmet": "^8.0.0",
-    "mongoose": "^8.9.4",
+    "ioredis": "^5.4.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.9.5",
     "morgan": "^1.10.0",
-    "nats": "^2.29.1"
+    "nats": "^2.29.1",
+    "nodemon": "^3.1.9"
   }
 }

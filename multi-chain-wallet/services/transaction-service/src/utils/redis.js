@@ -1,9 +1,10 @@
 import Redis from 'ioredis';
+import { redisHost, redisPassword, redisPort } from './config.js';
 
 const redis = new Redis({
-  host: process.env.REDIS_HOST || 'localhost',
-  port: process.env.REDIS_PORT || 6379,
-  password: process.env.REDIS_PASSWORD,
+  host: redisHost|| 'localhost',
+  port: redisPort || 6379,
+  password: redisPassword,
   maxRetriesPerRequest: null,
   enableReadyCheck: false
 });
