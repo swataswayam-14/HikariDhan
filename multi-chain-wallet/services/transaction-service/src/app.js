@@ -7,26 +7,23 @@ import mongoose from 'mongoose';
 import { setupEventHandlers } from './utils/eventBus.js';
 import transactionRoutes from './routes/transaction.js';
 import { errorHandler } from './utils/errors.js';
-import { authMiddleware } from './middleware/auth.js';
+import authMiddleware from './middlewares/auth.js';
+import { mongoDBUri } from './utils/config.js';
 
 const app = express();
 
-// Middleware
 app.use(helmet());
 app.use(cors());
 app.use(compression());
 app.use(express.json());
 app.use(morgan('combined'));
 
-// Routes
 app.use('/api/v1/transactions', authMiddleware, transactionRoutes);
 
-// Error handling
 app.use(errorHandler);
 
-// Connect to MongoDB and setup event handlers
 async function initializeApp() {
-  mongoose.connect(process.env.MONGODB_URI, {
+  mongoose.connect(mongoDBUri, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   });

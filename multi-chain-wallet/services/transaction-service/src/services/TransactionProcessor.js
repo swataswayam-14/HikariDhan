@@ -1,13 +1,14 @@
 import { ethers } from 'ethers';
 import { Connection } from '@solana/web3.js';
 import axios from 'axios';
+import { ethereumRPCUrl, solanaRPCUrl, bitcoinAPIUrl } from '../utils/config.js';
 
 export class TransactionProcessor {
   constructor() {
     this.providers = {
-      ethereum: new ethers.providers.JsonRpcProvider(process.env.ETHEREUM_RPC_URL),
-      solana: new Connection(process.env.SOLANA_RPC_URL),
-      bitcoin: process.env.BITCOIN_API_URL
+      ethereum: new ethers.providers.JsonRpcProvider(ethereumRPCUrl),
+      solana: new Connection(solanaRPCUrl),
+      bitcoin: bitcoinAPIUrl
     };
   }
 

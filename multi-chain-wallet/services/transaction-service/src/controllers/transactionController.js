@@ -12,7 +12,6 @@ export const transactionController = {
       const transaction = new Transaction(transactionData);
       await transaction.save();
 
-      // Publish event for processing
       await publishEvent('transaction.created', transaction);
 
       res.status(201).json({ 

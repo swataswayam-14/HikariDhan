@@ -1,13 +1,19 @@
 import NATS from 'nats';
-import { Transaction } from '../models/Transaction';
-import { TransactionProcessor } from '../services/TransactionProcessor';
+import { Transaction } from '../models/Transaction.js';
+import { TransactionProcessor } from '../services/TransactionProcessor.js';
+import { natsURI } from './config.js';
 
 let nc;
 
 export async function setupEventHandlers() {
-  nc = await NATS.connect({ servers: process.env.NATS_URL });
+  nc = await NATS.connect({ servers: natsURI });
+  console.log("Reached event handler");
+  if (nc) {
+    console.log("nats initialised");
+  } else {
+    console.log("nats not initialised");
+  }
   
-  // Subscribe to transaction events
   const sub = nc.subscribe('transaction.*');
   
   (async () => {
